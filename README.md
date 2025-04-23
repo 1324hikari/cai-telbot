@@ -67,7 +67,7 @@ Please leave a **Star ⭐** and open an issue if you encounter any problems
 to help continue make this project flawless
 
 
-''This schizophrenic project is made with love ♥️ somewhere in the Philippines 🇵🇭''
+**This schizophrenic project is made with love ♥️ somewhere in the Philippines 🇵🇭**
 
 ## License
 
