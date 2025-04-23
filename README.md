@@ -21,8 +21,11 @@ pip install -r requirements.txt
 
 You will need these to set-up the bot:
 >CharacterAI Token
+
 >Character ID (The character in CAi that you want to talk with)
+
 >Telwgram bot ID
+
 >Telegram USER ID (So that only you can message the bot)
 
 1 - Getting the Telegram token and creating the bot
