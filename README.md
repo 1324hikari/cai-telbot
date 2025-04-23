@@ -3,7 +3,9 @@
 cai-Telbot uses the PyCharacterAI library and the python-telegram-bot library.
 This program sends and recieves messages to CharacterAI using Telegram.
 
-#Installation
+Please note that this is still in development and you may face issues.
+
+# Installation
 
 1 - Copy this repository
 ```bash
@@ -53,10 +55,11 @@ NOTE: ONLY SEND ```/start``` ONCE AS SESSIONS IS SAVED IN A FILE
 
 ## Contributing
 
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
+Donate to the project
+Bitcoin (BTC): 1FCCRMqHhn1uheccUNbQKzPy9xg1WVfwui
 
-Please make sure to update tests as appropriate.
+Please leave a Star and open an issue if you encounter any problems
+to help continue make this project flawless
 
 ## License
 
