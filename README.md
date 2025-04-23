@@ -68,8 +68,7 @@ DH1M64ATHMgTqwrsokjanny6ML1wP3W6TQ**
 
 ## Contributing
 
-Please leave a **Star ⭐** and open an issue if you encounter any problems
-to help continue make this project flawless
+Please leave a **Star ⭐** and open an issue if you encounter any problems.
 
 
 **This schizophrenic project is made with love ♥️ somewhere in the Philippines 🇵🇭**
