@@ -10,13 +10,13 @@ from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, Con
 from termcolor import colored
 
 # TOkens
-TELEGRAM_BOT_TOKEN = "7784326891:AAHuLjrkXsG1YUx0I0SrIkwKOMYSHPK1Moo"
-CHARACTER_AI_TOKEN = "3a605c0bebb593d91755188527b5aad899e36323"
-CHARACTER_ID = "WCRXqrz2psewB_yVALARLogwDV5uQck4ek-BmE_p-3Q"
+TELEGRAM_BOT_TOKEN = "TOKEN HERE"
+CHARACTER_AI_TOKEN = "TOKEN HERE"
+CHARACTER_ID = "ID HERE"
 CHAT_SESSION_FILE = "chat_session.json"
 BOT_LOG_FILE = "bot_logs.txt"
 USER_LOG_FILE = "user_messages.txt"
-ALLOWED_USER_ID = 6531850274
+ALLOWED_USER_ID = ID HERE
 
 # Globals
 client = None
