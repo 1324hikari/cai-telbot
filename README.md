@@ -53,7 +53,9 @@ python3 telbot13.py
 ```
 And the bot should start and log all messages sent and recieved
 
+
 After running the bot for the first time, send a ```/start``` message to the bot in Telegram.
+
 
 NOTE: ONLY SEND ```/start``` ONCE AS SESSIONS IS SAVED IN A FILE
 
