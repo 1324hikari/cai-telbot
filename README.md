@@ -60,7 +60,9 @@ NOTE: ONLY SEND ```/start``` ONCE AS SESSIONS IS SAVED IN A FILE
 ## Donate to the Project
 
 **Bitcoin (BTC): 1FCCRMqHhn1uheccUNbQKzPy9xg1WVfwui**
+
 **Ethereum (ETH): 0x6187c2b9484274012e209bfa8c34cd5cbb90364e**
+
 **Dogecoin (DOGE):
 DH1M64ATHMgTqwrsokjanny6ML1wP3W6TQ**
 
