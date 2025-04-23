@@ -54,13 +54,20 @@ After running the bot for the first time, send a ```/start``` message to the bot
 
 NOTE: ONLY SEND ```/start``` ONCE AS SESSIONS IS SAVED IN A FILE
 
-## Contributing
+## Donate to the Project
 
-Donate to the project
 **Bitcoin (BTC): 1FCCRMqHhn1uheccUNbQKzPy9xg1WVfwui**
+**Ethereum (ETH): 0x6187c2b9484274012e209bfa8c34cd5cbb90364e**
+**Dogecoin (DOGE):
+DH1M64ATHMgTqwrsokjanny6ML1wP3W6TQ**
+
+## Contributing
 
 Please leave a **Star ⭐** and open an issue if you encounter any problems
 to help continue make this project flawless
+
+
+''This schizophrenic project is made with love ♥️ somewhere in the Philippines 🇵🇭''
 
 ## License
 
