@@ -24,24 +24,30 @@ You will need these to set-up the bot:
 
 >Character ID (The character in CAi that you want to talk with)
 
->Telwgram bot ID
+>Telegram bot ID
 
 >Telegram USER ID (So that only you can message the bot)
 
-1 - Getting the Telegram token and creating the bot
+
+
+**1 - Getting the Telegram token and creating the bot**
+
 go to Telegram and using botfather, create a new bot. After the bot is
 created, it should give you your bot token. Paste this into ```TELEGRAM_BOT_TOKEN```
 
-2 - Getting the Telegram USER ID
+**2 - Getting the Telegram USER ID**
+
 Use the ''@userinfo'' bot in Telegram to get your USER ID. Paste it
 into ```ALLOWED_USER_ID```
 
-3 - Getting the Charcter ID
+**3 - Getting the Charcter ID**
+
 Search for the character you want in CharacterAI (website, not the mobile app)
 it should be like ```https://character.ai/chats2?=ID_HERE``` and paste it into
 ```CHARACTER_ID```
 
-4 - Getting the Character AI Token
+**4 - Getting the Character AI Token**
+
 You can follow [this guide](https://github.com/realcoloride/node_characterai) on
 how to get your CharacterAI token. After getting it, paste it on ```CHARACTER_AI_TOKEN```
 
@@ -57,7 +63,7 @@ And the bot should start and log all messages sent and recieved
 After running the bot for the first time, send a ```/start``` message to the bot in Telegram.
 
 
-NOTE: ONLY SEND ```/start``` ONCE AS SESSIONS IS SAVED IN A FILE
+>NOTE: ONLY SEND ```/start``` ONCE AS >SESSIONS IS SAVED IN A FILE
 
 ## Donate to the Project
 
