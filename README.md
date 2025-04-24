@@ -82,5 +82,4 @@ Please leave a **Star ⭐** and open an issue if you encounter any problems.
 **This schizophrenic project is made with love ♥️ somewhere in the Philippines 🇵🇭**
 
 ## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
+<a rel="license" href="https://opensource.org/licenses/MIT"><img alt="MIT License" src="https://cloud.githubusercontent.com/assets/5456665/18950087/fbe0681a-865f-11e6-9552-e59d038d5913.png" width="60em" height=auto/></a><br/><a href="https://github.com/1324hikari/cai-telbot">cai-telbot</a> is licensed under <a rel="license" href="https://opensource.org/licenses/MIT">MIT License</a>.
