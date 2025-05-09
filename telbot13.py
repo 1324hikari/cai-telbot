@@ -6,42 +6,65 @@ from datetime import datetime
 from PyCharacterAI import get_client
 from PyCharacterAI.exceptions import SessionClosedError
 from telegram import Update
-from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, ContextTypes, filters
+from telegram.ext import (
+    ApplicationBuilder,
+    CommandHandler,
+    MessageHandler,
+    ContextTypes,
+    filters,
+)
 from termcolor import colored
 
-# TOkens
-TELEGRAM_BOT_TOKEN = "TOKEN HERE"
-CHARACTER_AI_TOKEN = "TOKEN HERE"
-CHARACTER_ID = "ID HERE"
+# Import configuration from config.py
+try:
+    from config import (
+        TELEGRAM_BOT_TOKEN,
+        CHARACTER_AI_TOKEN,
+        CHARACTER_ID,
+        ALLOWED_USER_ID,
+    )
+except ImportError:
+    print("Error: config.py file not found or improperly configured")
+    exit(1)
+
+# Constants
 CHAT_SESSION_FILE = "chat_session.json"
 BOT_LOG_FILE = "bot_logs.txt"
 USER_LOG_FILE = "user_messages.txt"
-ALLOWED_USER_ID = ID HERE
 
-# Globals
-client = None
-chat = None
+# Global variables
+client = None  # Character.AI client instance
+chat = None  # Current chat session
 current_time = datetime.now()
 
-# Logs
-def log_to_file(log_file, message):
-    with open(log_file, "a") as file:
+# --------------------------
+# Utility Functions
+# --------------------------
+
+def log_to_file(log_file: str, message: str) -> None:
+    """Log messages to a specified file with timestamp."""
+    with open(log_file, "a", encoding="utf-8") as file:
         file.write(f"{datetime.now()} - {message}\n")
 
-# Save and Load sessions
-def save_chat_session(chat_id):
-    with open(CHAT_SESSION_FILE, "w") as f:
+def save_chat_session(chat_id: str) -> None:
+    """Save the current chat session ID to a file."""
+    with open(CHAT_SESSION_FILE, "w", encoding="utf-8") as f:
         json.dump({"chat_id": chat_id}, f)
 
-def load_chat_session():
+def load_chat_session() -> str | None:
+    """Load the chat session ID from file if it exists."""
     if os.path.exists(CHAT_SESSION_FILE):
-        with open(CHAT_SESSION_FILE, "r") as f:
+        with open(CHAT_SESSION_FILE, "r", encoding="utf-8") as f:
             data = json.load(f)
             return data.get("chat_id")
     return None
 
-# Start Command
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+# --------------------------
+# Command Handlers
+# --------------------------
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Handle the /start command to initialize the bot and Character.AI session."""
     global client, chat
 
     user = update.effective_user
@@ -54,7 +77,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     log_to_file(USER_LOG_FILE, f"User @{user.username} (ID: {user.id}) issued /start command.")
 
     try:
-        while True:  # Retry loop for network connection (PLDT keeps disconnecting)
+        while True:  # Retry loop for network connection
             try:
                 if not client:
                     client = await get_client(token=CHARACTER_AI_TOKEN)
@@ -80,8 +103,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         print(colored(error_message, "red"))
         log_to_file(BOT_LOG_FILE, error_message)
 
-# Stop Command
-async def stop(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def stop(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Handle the /stop command to terminate the Character.AI session."""
     global client, chat
 
     user = update.effective_user
@@ -109,8 +132,12 @@ async def stop(update: Update, context: ContextTypes.DEFAULT_TYPE):
         print(colored(error_message, "red"))
         log_to_file(BOT_LOG_FILE, error_message)
 
-# Handle Messages
-async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
+# --------------------------
+# Message Handler
+# --------------------------
+
+async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Handle incoming text messages from authorized users."""
     global client, chat
 
     user = update.effective_user
@@ -120,7 +147,9 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if user.id != ALLOWED_USER_ID:
         print(colored(f"Unauthorized access attempt by @{user.username} (ID: {user.id})", "red"))
         log_to_file(BOT_LOG_FILE, f"Unauthorized message from @{user.username} (ID: {user.id}): {user_message}")
-        await update.message.reply_text("You are not authorized to use this bot. For more info, please message the developer @Hikarii7713")
+        await update.message.reply_text(
+            "You are not authorized to use this bot. For more info, please message the developer @Hikarii7713"
+        )
         return
 
     try:
@@ -135,8 +164,12 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         # Retry for failed message send
         while True:
             try:
-                await context.bot.send_chat_action(chat_id=update.effective_chat.id, action="typing")
-                answer = await client.chat.send_message(CHARACTER_ID, saved_chat_id, user_message)
+                await context.bot.send_chat_action(
+                    chat_id=update.effective_chat.id, action="typing"
+                )
+                answer = await client.chat.send_message(
+                    CHARACTER_ID, saved_chat_id, user_message
+                )
                 response_text = answer.get_primary_candidate().text
                 save_chat_session(saved_chat_id)
 
@@ -153,10 +186,15 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         print(colored(error_message, "red"))
         log_to_file(BOT_LOG_FILE, error_message)
 
+# --------------------------
 # Main Function
-def main():
+# --------------------------
+
+def main() -> None:
+    """Initialize and run the Telegram bot."""
     app = ApplicationBuilder().token(TELEGRAM_BOT_TOKEN).build()
 
+    # Register handlers
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("stop", stop))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
